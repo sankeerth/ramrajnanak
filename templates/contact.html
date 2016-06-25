@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<html>
+<head>
+	{% include 'head_css.html' %}
+	{% include 'javascript.html' %}
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+        $(".nav li").removeClass("active");//this will remove the active class from  
+                                           //previously active menu item 
+        $('#contact').addClass('active');
+    	});
+
+	</script>
+</head>
+<body>
+	{% include 'navbar.html' %}
+
+{% load crispy_forms_tags %}
+
+<div class="row">
+	<div class="col-sm-4 col-sm-offset-2">
+		{% if title %}
+		<h1 class="text-align-center"> {{ title }} </h1>
+		{% endif %}
+		<form method='POST' action=""> {% csrf_token %}
+		{{ form|crispy }}
+		<div class="text-align-center">
+		<input class="btn btn-default" type='submit' value='Submit'/>
+		</div>
+		</form>
+	</div>
+	<div class="col-sm-4 col-sm-offset-1 text-align-center">
+		<h2> Consulting Venue</h2>
+		<h3>COLUMBIA ASIA HOSPITAL</h3>
+		<map style="margin:0">	
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124394.8080121074!2d77.48593115936262!3d13.014150807133886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae162a55555555%3A0x886d228d64097005!2sColumbia+Asia+Referral+Hospital!5e0!3m2!1sen!2s!4v1465844082967" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</iframe>
+		</map>
+	</div>
+</div>
+
+</body>
+</html>
